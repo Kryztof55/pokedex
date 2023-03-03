@@ -1,0 +1,26 @@
+.info-panel {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.title-container {
+    margin-bottom: .5rem;
+    .title {
+        margin-bottom: .5rem;
+    }
+}
+
+@media (min-width: 768px){
+    .info-panel {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 2.5rem;
+        margin-top: 0;
+    }
+    .title-container {
+        margin-bottom: 2rem;
+        .title {
+            margin-bottom: .5rem;
+        }
+    }
+}

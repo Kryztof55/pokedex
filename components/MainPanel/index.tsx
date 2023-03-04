@@ -1,14 +1,14 @@
 import Title from "../Title";
 import InfoPanel from "../InfoPanel";
 import Bar from "../Bar";
-import "./MainPanel.scss";
+import styles from "./MainPanel.module.scss";
 
 const MainPanel = ({ stats, info }) => {
   return (
-    <div className="panel">
-      <div className="panel-container">
+    <div className={styles.panel}>
+      <div className={styles.panelContainer}>
         <div>
-          <Title className="panel-title" text="Pokemon" />
+          <Title className={styles.panelTitle} text="Pokemon" />
           {stats.map((el, i) => {
             return <Bar stat={el.stat} text={el.text} />;
           })}

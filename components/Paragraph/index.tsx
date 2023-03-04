@@ -1,4 +1,4 @@
-import "./Paragraph.scss";
+import styles from "./Paragraph.module.scss";
 
 interface ParagraphProps {
   text: string;
@@ -26,7 +26,9 @@ const Paragraph = ({
       ? "font-normal"
       : "font-bold";
   return (
-    <p className={`paragraph ${colorClass} ${weightClass} ${className}`}>
+    <p
+      className={`${styles.paragraph} ${colorClass} ${weightClass} ${className}`}
+    >
       {text}
     </p>
   );

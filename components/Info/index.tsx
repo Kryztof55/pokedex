@@ -1,10 +1,10 @@
 import Paragraph from "../Paragraph";
 import Caption from "../Caption";
-import "./Info.scss";
+import styles from "./Info.module.scss";
 
 const Info = ({ title, value }) => {
   return (
-    <div className="info">
+    <div className={styles.info}>
       <Paragraph text="Altura" />
       <Caption text="1,0" />
     </div>

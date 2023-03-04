@@ -1,21 +1,23 @@
-.bar-container{
+.barContainer{
     margin-bottom: .3rem;
     .bar {
         height: 1rem;
         width: 100%;
-        background-color:#e0e0de;
+        background-color:#dedede;
         border-radius: .5rem;
         margin-bottom: .1rem;
-        .bar-fill {
+        .barFill {
             height: 100%;
             transition: all 250ms ease-in-out;
             border-radius: inherit;
             display: flex;
             align-items: center;
             justify-content: flex-end;
+            background-color: rgb(174, 0, 139);
             p {
                 margin-right: 1rem;
             }
+
         }
     }
 }

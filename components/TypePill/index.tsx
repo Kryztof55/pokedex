@@ -1,9 +1,15 @@
 import Caption from "../Caption";
-import "./TypePill.scss";
+import styles from "./TypePill.module.scss";
 
-const TypePill = ({ type }) => {
+interface TypePillProps {
+  type: string;
+}
+
+const TypePill = ({ type = "normal" }: TypePillProps) => {
+  const className = styles[type];
+
   return (
-    <div className={`typePill ${type}`}>
+    <div className={`${styles.typePill} ${className}`}>
       <Caption colorVariant="white" text={type} />
     </div>
   );

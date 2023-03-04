@@ -1,4 +1,4 @@
-import "./Caption.scss";
+import styles from "./Caption.module.scss";
 
 interface CaptionProps {
   text: string;
@@ -23,7 +23,9 @@ const Caption = ({
       : weight === "regular"
       ? "font-normal"
       : "font-bold";
-  return <p className={`caption ${colorClass} ${weightClass}`}>{text}</p>;
+  return (
+    <p className={`${styles.caption} ${colorClass} ${weightClass}`}>{text}</p>
+  );
 };
 
 export default Caption;

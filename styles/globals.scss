@@ -2,7 +2,9 @@
   font-family: 'Bungee';
   src: url('../public/fonts/BungeeOutline-Regular.ttf') format('truetype');
 }
-
+body{
+  margin: 0;
+}
 .text-white{
   color: white;
   margin: 0;

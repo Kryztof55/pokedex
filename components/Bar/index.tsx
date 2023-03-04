@@ -1,7 +1,12 @@
 import Caption from "../Caption";
 import styles from "./Bar.module.scss";
 
-const Bar = ({ stat, text }) => {
+interface BarProps {
+  stat: number;
+  test: string;
+}
+
+const Bar = ({ stat, text }: BarProps) => {
   const fillerStyles = {
     width: `${stat}%`,
   };

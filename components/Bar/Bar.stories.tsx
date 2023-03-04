@@ -12,4 +12,5 @@ export const BarPrimary = Template.bind({});
 
 BarPrimary.args = {
   stat: 80,
+  text: "Attack",
 };

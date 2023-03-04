@@ -3,7 +3,12 @@ import InfoPanel from "../InfoPanel";
 import Bar from "../Bar";
 import styles from "./MainPanel.module.scss";
 
-const MainPanel = ({ stats, info }) => {
+interface MainPanelProps {
+  stats: array;
+  info: array;
+}
+
+const MainPanel = ({ stats, info }: MainPanelProps) => {
   return (
     <div className={styles.panel}>
       <div className={styles.panelContainer}>

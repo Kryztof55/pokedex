@@ -15,5 +15,4 @@ export const CaptionPrimary = Template.bind({});
 CaptionPrimary.args = {
   text: "Simple Caption",
   colorVariant: "dark",
-  weight: "regular",
 };

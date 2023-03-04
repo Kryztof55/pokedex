@@ -9,54 +9,13 @@ import Bar from "../Bar";
 
 import styles from "./Card.module.scss";
 
-const Card = () => {
-  const types = ["normal", "normal"];
+interface CardProps {
+  types: array;
+  info: array;
+  stats: array;
+}
 
-  const info = [
-    {
-      title: "Altura",
-      value: "1,0",
-    },
-    {
-      title: "Altura",
-      value: "1,0",
-    },
-    {
-      title: "Altura",
-      value: "1,0",
-    },
-    {
-      title: "Altura",
-      value: "1,0",
-    },
-  ];
-
-  const stats = [
-    {
-      text: "HP",
-      stat: "80",
-    },
-    {
-      text: "HP",
-      stat: "50",
-    },
-    {
-      text: "HP",
-      stat: "100",
-    },
-    {
-      text: "HP",
-      stat: "20",
-    },
-    {
-      text: "HP",
-      stat: "10",
-    },
-    {
-      text: "HP",
-      stat: "40",
-    },
-  ];
+const Card = ({ types, info, stats }: CardProps) => {
   return (
     <article className={styles.article}>
       <div className={styles.card}>

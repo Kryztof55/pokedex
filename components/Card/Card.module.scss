@@ -1,17 +1,16 @@
 .article {
     position: relative;
+    background-color: white;
+    border: solid 1px #f3f3f3;
+    border-radius:.6rem;
+    margin-bottom: 2rem;
     .card{
         padding: 2rem;
-        border-radius:.6rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         position: relative;
         overflow: hidden;
-        border: solid 1px #f3f3f3;
-        .cardTitle{
-            margin-bottom: 2rem;
-        }
         .cardImg{
             margin-bottom: 1rem;
         }
@@ -21,15 +20,12 @@
             width: 100%;
         }
         &:hover{
-            overflow-y: scroll;
             ~.panelImg{
                 opacity: 1;
                 top: -30px;
                 left: -30px;
             }
-            
          }
-     
     }
     .panelImg {
         position: absolute;
@@ -42,6 +38,7 @@
 
 @media (min-width:768px){
     .article {
+        margin-bottom: 0;
         .card{
             &:hover{
                 overflow-y: hidden;

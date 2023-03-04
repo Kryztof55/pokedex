@@ -26,18 +26,6 @@ MainPanelPrimary.args = {
       text: "HP",
       stat: "100",
     },
-    {
-      text: "HP",
-      stat: "20",
-    },
-    {
-      text: "HP",
-      stat: "10",
-    },
-    {
-      text: "HP",
-      stat: "40",
-    },
   ],
   info: [
     {

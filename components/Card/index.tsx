@@ -26,8 +26,10 @@ const Card = ({ name }: CardProps) => {
     keepPreviousData: true,
   });
 
-  const POKE_IMG = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${details?.id}.svg`;
-  const POKE_NAME = details?.name;
+  const POKE_IMG = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${
+    details?.id ? details?.id : "1"
+  }.svg`;
+  const POKE_NAME = details?.name ? details?.name : "Pokename";
 
   const info = [
     {

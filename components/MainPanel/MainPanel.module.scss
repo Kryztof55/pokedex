@@ -9,7 +9,7 @@
     opacity: 0;
     overflow: hidden;
     .panelTitle {
-        margin-bottom: 1rem;
+        margin-right: 1rem;
     }
     .panelContainer {
         background-color: #cefbff;
@@ -21,6 +21,9 @@
             top: 10px;
             bottom: 10px;
         }
+    }
+    .headName {
+        display: flex;
     }
     &:hover{
         left:0;

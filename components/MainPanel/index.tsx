@@ -1,6 +1,7 @@
 import Title from "../Title";
 import InfoPanel from "../InfoPanel";
 import Bar from "../Bar";
+import AddFav from "../AddFav";
 import styles from "./MainPanel.module.scss";
 
 interface MainPanelProps {
@@ -9,15 +10,20 @@ interface MainPanelProps {
 }
 
 const MainPanel = ({ stats, info }: MainPanelProps) => {
-  console.log("stats", stats);
+  const handleAddFav = () => {
+    console.log("Added");
+  };
   const statsFilterd = stats?.slice(0, 4);
   return (
     <div className={styles.panel}>
       <div className={styles.panelContainer}>
         <div>
-          <Title className={styles.panelTitle} text="Pokemon" />
+          <div className={styles.headName}>
+            <Title className={styles.panelTitle} text="Pokemon" />
+            <AddFav onAddToFavs={handleAddFav} />
+          </div>
           {statsFilterd?.map((el, i) => {
-            return <Bar stat={el.base_stat} text={el.stat.name} />;
+            return <Bar key={i} stat={el.base_stat} text={el.stat.name} />;
           })}
         </div>
         <InfoPanel info={info} />

@@ -3,7 +3,7 @@ import styles from "./InputSearch.module.scss";
 
 interface InputSearchProps {
   placeholder: string;
-  onChange: any;
+  onChange: () => void;
   className: string;
 }
 

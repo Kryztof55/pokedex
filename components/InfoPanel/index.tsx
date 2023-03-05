@@ -12,7 +12,7 @@ const InfoPanel = ({ info }: InfoPanelProps) => {
     <div>
       <div className={styles.infoPanel}>
         {info.map((el, i) => (
-          <Info title={el.title} value={el.value} />
+          <Info key={i} title={el.title} value={el.value} />
         ))}
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
@@ -13,6 +13,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [generation, setGeneration] = useState("1");
+  const [numElements, setNumElements] = useState(9);
+  const [pokemones, setPokemones] = useState([]);
+  const increment = 9;
+
   const {
     isLoading,
     isError,
@@ -26,7 +30,39 @@ export default function Home() {
     }
   );
 
-  const slicedList = pokes?.pokemon_species.slice(0, 10);
+  useEffect(() => {
+    setPokemones(pokes?.pokemon_species.slice(0, numElements));
+  }, [isLoading, numElements]);
+
+  //let elementsToShow = pokes?.pokemon_species.slice(0, numElements);
+
+  useEffect(() => {
+    handleScroll();
+  }, []);
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let query = e.target.value.toLowerCase();
+    let pokeFiltered: Pokemon[] = [];
+    if (query.length > 3) {
+      setPokemones(
+        pokes?.pokemon_species.filter((el) => el.name.includes(query))
+      );
+    } else {
+      setPokemones(pokes?.pokemon_species.slice(0, numElements));
+      //elementsToShow = pokes?.pokemon_species.slice(0, numElements);
+    }
+  };
+
+  const handleScroll = (): void => {
+    const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+    if (scrollTop + clientHeight >= scrollHeight) {
+      setNumElements((prevNumElements) => prevNumElements + increment);
+    }
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  };
 
   return (
     <>
@@ -40,10 +76,15 @@ export default function Home() {
         <div className={styles.logoContainer}>
           <img className={styles.logo} src="/logo.webp" alt="Pokemon Name" />
         </div>
-        <InputSearch placeholder="Search Pokémon" />
+        <div className={styles.searchContainer}>
+          <InputSearch
+            onChange={(e) => handleSearch(e)}
+            placeholder="Search Pokémon"
+          />
+        </div>
         <section className={styles.container}>
-          {slicedList?.map((el, i) => {
-            return <Card name={el.name} />;
+          {pokemones?.map((el, i) => {
+            return <Card key={i} name={el.name} />;
           })}
         </section>
       </main>

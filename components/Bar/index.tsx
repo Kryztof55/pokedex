@@ -6,7 +6,7 @@ interface BarProps {
   test: string;
 }
 
-const Bar = ({ stat, text }: BarProps) => {
+const Bar = ({ stat = 80, text = "Attack" }: BarProps) => {
   const fillerStyles = {
     width: `${stat}%`,
   };

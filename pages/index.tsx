@@ -1,13 +1,33 @@
+import React, { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/home.module.scss";
 import Card from "@/components/Card";
 import Logo from "@/public/logo.webp";
+import { getGenerationPage } from "@/utils/axios";
+import { useQuery } from "react-query";
+import InputSearch from "@/components/InputSearch";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [generation, setGeneration] = useState("1");
+  const {
+    isLoading,
+    isError,
+    error,
+    data: pokes,
+  } = useQuery(
+    ["generation/", generation],
+    () => getGenerationPage(generation),
+    {
+      keepPreviousData: true,
+    }
+  );
+
+  const slicedList = pokes?.pokemon_species.slice(0, 10);
+
   return (
     <>
       <Head>
@@ -20,13 +40,11 @@ export default function Home() {
         <div className={styles.logoContainer}>
           <img className={styles.logo} src="/logo.webp" alt="Pokemon Name" />
         </div>
+        <InputSearch placeholder="Search Pokémon" />
         <section className={styles.container}>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {slicedList?.map((el, i) => {
+            return <Card name={el.name} />;
+          })}
         </section>
       </main>
     </>

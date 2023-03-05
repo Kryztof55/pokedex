@@ -9,13 +9,15 @@ interface MainPanelProps {
 }
 
 const MainPanel = ({ stats, info }: MainPanelProps) => {
+  console.log("stats", stats);
+  const statsFilterd = stats?.slice(0, 4);
   return (
     <div className={styles.panel}>
       <div className={styles.panelContainer}>
         <div>
           <Title className={styles.panelTitle} text="Pokemon" />
-          {stats.map((el, i) => {
-            return <Bar stat={el.stat} text={el.text} />;
+          {statsFilterd?.map((el, i) => {
+            return <Bar stat={el.base_stat} text={el.stat.name} />;
           })}
         </div>
         <InfoPanel info={info} />

@@ -15,16 +15,6 @@ const InfoPanel = ({ info }: InfoPanelProps) => {
           <Info title={el.title} value={el.value} />
         ))}
       </div>
-      <div className={styles.footer}>
-        <div className={styles.titleContainer}>
-          <Paragraph className={styles.title} text="Tipo" />
-          <TypePill type="normal" />
-        </div>
-        <div className={styles.titleContainer}>
-          <Paragraph className={styles.title} text="Debilidad" />
-          <TypePill type="normal" />
-        </div>
-      </div>
     </div>
   );
 };

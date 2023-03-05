@@ -10,8 +10,8 @@ interface InfoProps {
 const Info = ({ title, value }: InfoProps) => {
   return (
     <div className={styles.info}>
-      <Paragraph text="Altura" />
-      <Caption text="1,0" />
+      <Paragraph text={title} />
+      <Caption text={value} />
     </div>
   );
 };

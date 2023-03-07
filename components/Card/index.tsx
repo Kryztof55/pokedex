@@ -62,7 +62,7 @@ const Card = ({ name }: CardProps) => {
             <TypePill key={i} type={el.type.name} />
           ))}
         </div>
-        <MainPanel stats={details?.stats} info={info} />
+        <MainPanel name={name} stats={details?.stats} info={info} />
       </div>
       <Image
         className={styles.panelImg}

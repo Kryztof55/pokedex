@@ -2,9 +2,16 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     margin: {
         top: 1rem;
         bottom: 1rem;
+    }
+    .search {
+        margin: {
+            left: .5rem;
+            right: .5rem;
+        };
     }
 }
 

@@ -1,5 +1,8 @@
 import { ComponentStory } from "@storybook/react";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { Provider } from "react-redux";
+import { configureStore, createSlice } from "@reduxjs/toolkit";
+import store from "../../store/store";
 
 import Card from "./";
 const queryClient = new QueryClient();
@@ -9,9 +12,11 @@ export default {
   component: Card,
   decorators: [
     (Story) => (
-      <QueryClientProvider client={queryClient}>
-        <Story />
-      </QueryClientProvider>
+      <Provider store={store}>
+        <QueryClientProvider client={queryClient}>
+          <Story />
+        </QueryClientProvider>
+      </Provider>
     ),
   ],
 };

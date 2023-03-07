@@ -5,10 +5,11 @@ import { faHeart as faHeartFilled } from "@fortawesome/free-solid-svg-icons";
 import styles from "./AddFav.module.scss";
 
 interface Props {
+  colorVariant: string;
   onAddToFavorites: () => void;
 }
 
-const AddFavoritos = ({ onAddToFavs }: Props) => {
+const AddFavoritos = ({ onAddToFavs, colorVariant = "grey" }: Props) => {
   const [isFilled, setIsFilled] = useState(false);
 
   const handleClick = () => {
@@ -23,7 +24,7 @@ const AddFavoritos = ({ onAddToFavs }: Props) => {
       <FontAwesomeIcon
         className={styles.addFav}
         icon={heartIcon}
-        color={isFilled ? "red" : "grey"}
+        color={isFilled ? "red" : colorVariant}
       />
     </div>
   );

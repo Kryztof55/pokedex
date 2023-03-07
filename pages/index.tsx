@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Image from "next/image";
+import { useSelector } from "react-redux";
 import { Inter } from "next/font/google";
 import styles from "@/styles/home.module.scss";
 import Card from "@/components/Card";
@@ -8,6 +9,11 @@ import Logo from "@/public/logo.webp";
 import { getGenerationPage } from "@/utils/axios";
 import { useQuery } from "react-query";
 import InputSearch from "@/components/InputSearch";
+import Checkbox from "@/components/Checkbox";
+import AddFav from "@/components/AddFav";
+import Paragraph from "@/components/Paragraph";
+import Title from "@/components/Title";
+import { selectaddFavs } from "@/store/favs";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +21,11 @@ export default function Home() {
   const [generation, setGeneration] = useState("1");
   const [numElements, setNumElements] = useState(9);
   const [pokemones, setPokemones] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [showFavorites, setShowFavorites] = useState(false);
+  const [loadMore, setLoadMore] = useState(true);
+  const arrFavs = useSelector(selectaddFavs);
   const increment = 9;
-
   const {
     isLoading,
     isError,
@@ -31,10 +40,11 @@ export default function Home() {
   );
 
   useEffect(() => {
-    setPokemones(pokes?.pokemon_species.slice(0, numElements));
-  }, [isLoading, numElements]);
-
-  //let elementsToShow = pokes?.pokemon_species.slice(0, numElements);
+    let arrNew = pokes?.pokemon_species.slice(0, numElements);
+    if (arrNew) {
+      setPokemones([...arrNew]);
+    }
+  }, [isLoading, numElements, generation, pokes]);
 
   useEffect(() => {
     handleScroll();
@@ -49,7 +59,6 @@ export default function Home() {
       );
     } else {
       setPokemones(pokes?.pokemon_species.slice(0, numElements));
-      //elementsToShow = pokes?.pokemon_species.slice(0, numElements);
     }
   };
 
@@ -62,6 +71,26 @@ export default function Home() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+  };
+
+  const toogleGen = () => {
+    setGeneration(generation === "1" ? "2" : "1");
+    setNumElements(9);
+  };
+
+  const showFavs = () => {
+    let toogle = !showFavorites;
+    setShowFavorites(toogle);
+    setLoadMore(toogle);
+    if (toogle) {
+      let arrNew = pokes?.pokemon_species;
+      let filteredArray = arrNew.filter((el) => arrFavs.includes(el.name));
+      setPokemones([...filteredArray]);
+    } else {
+      let arrNew = pokes?.pokemon_species.slice(0, numElements);
+      setPokemones([...arrNew]);
+      setLoadMore(true);
+    }
   };
 
   return (
@@ -77,15 +106,27 @@ export default function Home() {
           <img className={styles.logo} src="/logo.webp" alt="Pokemon Name" />
         </div>
         <div className={styles.searchContainer}>
+          <div>
+            <Paragraph text="Favs" colorVariant="white" />
+            <AddFav colorVariant="white" onAddToFavs={showFavs} />
+          </div>
           <InputSearch
             onChange={(e) => handleSearch(e)}
             placeholder="Search Pokémon"
+            className={styles.search}
           />
+          <Checkbox onChange={toogleGen} label="Gen. 2" colorVariant="white" />
         </div>
         <section className={styles.container}>
-          {pokemones?.map((el, i) => {
-            return <Card key={i} name={el.name} />;
-          })}
+          {pokemones?.length === 0 ? (
+            <div className={styles.searchContainer}>
+              <Title text="No items" colorVariant="white" />
+            </div>
+          ) : (
+            pokemones?.map((el, i) => {
+              return <Card key={i} name={el.name} />;
+            })
+          )}
         </section>
       </main>
     </>

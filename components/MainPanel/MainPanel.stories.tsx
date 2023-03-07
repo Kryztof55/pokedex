@@ -1,9 +1,19 @@
 import { ComponentStory } from "@storybook/react";
+import { Provider } from "react-redux";
+
+import store from "../../store/store";
 import MainPanel from "./";
 
 export default {
   title: "Organisms/MainPanel",
   component: MainPanel,
+  decorators: [
+    (Story) => (
+      <Provider store={store}>
+        <Story />
+      </Provider>
+    ),
+  ],
 };
 
 const Template: ComponentStory<typeof MainPanel> = (args) => (

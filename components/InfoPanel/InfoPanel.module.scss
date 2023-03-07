@@ -1,0 +1,31 @@
+.infoPanel {
+    display: none
+}
+.footer{
+    display: flex;
+    justify-content: space-between;
+}
+.titleContainer {
+    margin-bottom: .5rem;
+    display: none;
+    .title {
+        margin-bottom: .5rem;
+    }
+}
+
+@media (min-width: 768px){
+    .infoPanel {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .titleContainer {
+        display: block;
+        margin-bottom: 2rem;
+        .title {
+            margin-bottom: .5rem;
+        }
+    }
+}

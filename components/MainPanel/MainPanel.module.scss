@@ -1,0 +1,45 @@
+.panel{
+    border-radius:.6rem;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 100ms ease-in-out;
+    left: 0;
+    opacity: 0;
+    overflow: hidden;
+    .panelTitle {
+        margin-right: 1rem;
+    }
+    .panelContainer {
+        background-color: #cefbff;
+        border-radius:.6rem;
+        height: 100%;
+        padding: {
+            left: 130px;
+            right: 10px;
+            top: 10px;
+            bottom: 10px;
+        }
+    }
+    .headName {
+        display: flex;
+    }
+    &:hover{
+        left:0;
+        opacity: 1;
+    }
+}
+
+@media (min-width: 768px) {
+    .panel{
+        .panelContainer {
+            padding: {
+                left: 130px;
+                right: 20px;
+                top: 10px;
+                bottom: 10px;
+            }
+        }
+    }
+}

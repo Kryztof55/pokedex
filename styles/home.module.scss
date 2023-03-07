@@ -1,8 +1,9 @@
 .searchContainer {
-    width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    height: 200px;
     margin: {
         top: 1rem;
         bottom: 1rem;
@@ -25,6 +26,24 @@
 }
 
 @media (min-width: 768px){
+    .searchContainer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        height: auto;
+        margin: {
+            top: 1rem;
+            bottom: 1rem;
+        }
+        .search {
+            margin: {
+                left: .5rem;
+                right: .5rem;
+            };
+        }
+    }
 
     .logoContainer {
         display: flex;
@@ -36,7 +55,7 @@
     }
     .container {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 1rem;
     }
     .searchContainer {
@@ -44,6 +63,14 @@
             top: 2rem;
             bottom: 2rem;
         }
+    }
+}
+
+@media (min-width: 1024px){
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
     }
 }
 

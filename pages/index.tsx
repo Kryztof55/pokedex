@@ -50,12 +50,13 @@ export default function Home() {
     handleScroll();
   }, []);
 
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>): void => {
     let query = e.target.value.toLowerCase();
     let pokeFiltered: Pokemon[] = [];
+
     if (query.length > 3) {
       setPokemones(
-        pokes?.pokemon_species.filter((el) => el.name.includes(query))
+        pokes?.pokemon_species.filter((el: Pokemon) => el.name.includes(query))
       );
     } else {
       setPokemones(pokes?.pokemon_species.slice(0, numElements));
@@ -73,18 +74,20 @@ export default function Home() {
     };
   };
 
-  const toogleGen = () => {
+  const toogleGen = (): void => {
     setGeneration(generation === "1" ? "2" : "1");
     setNumElements(9);
   };
 
-  const showFavs = () => {
+  const showFavs = (): void => {
     let toogle = !showFavorites;
     setShowFavorites(toogle);
     setLoadMore(toogle);
     if (toogle) {
       let arrNew = pokes?.pokemon_species;
-      let filteredArray = arrNew.filter((el) => arrFavs.includes(el.name));
+      let filteredArray = arrNew.filter((el: { name: string }) =>
+        arrFavs.includes(el.name)
+      );
       setPokemones([...filteredArray]);
     } else {
       let arrNew = pokes?.pokemon_species.slice(0, numElements);
